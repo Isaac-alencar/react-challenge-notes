@@ -1,7 +1,24 @@
 import { Note } from "./Note"
 import './Layout.css';
+import { GetNotes } from "../Iinfrastructure/GetNotes";
+import { useEffect, useState } from "react";
 
 const Layout = () => {
+    const [notes, setNotes] = useState([]);
+
+    const fecthGetNotes = async id => {
+        try {
+            const data = await GetNotes(id);
+            setNotes(data);
+        } catch (error) {
+            console.log('erro');
+        }
+    }
+
+    useEffect(() => {
+        fecthGetNotes();
+    }, []);
+
     return (
         <main>
             <aside>
@@ -16,9 +33,17 @@ const Layout = () => {
                 </div>
             </aside>
             <div className="notes">
-                <Note />
-                <Note />
-                <Note />
+                {
+                    notes.length > 0 && (
+                        notes.map(note => (
+                            <Note
+                                id={note.id}
+                                title={note.title}
+                                description={note.description}
+                            />
+                        ))
+                    )
+                }
             </div>
         </main>
     )
