@@ -1,0 +1,13 @@
+.toast {
+    position: absolute;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    border-radius: 8px;
+    padding: 10px;
+    animation: animateToast 1s forwards;
+}
+
+@keyframes animateToast {
+    from { transform: translateY(-50px); }
+    to { transform: translateY(10px); }
+}
