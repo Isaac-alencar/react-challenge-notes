@@ -1,8 +1,8 @@
 import './Note.css';
 
-const Note = ({ id, title, description }) => {
+const Note = ({ title, description }) => {
     return (
-        <div className="note" id={id}>
+        <div className="note">
             <div className='box-btn-close'>
                 <img src='/btnClose.svg' />
             </div>
